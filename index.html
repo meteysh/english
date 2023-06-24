@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Перевод слов</title>
+  <style>
+    body {
+      font-size: 3em; /* Увеличение размера шрифта в три раза */
+    }
+  </style>
+  <script>
+    function getRandomIndex(array) {
+      return Math.floor(Math.random() * array.length);
+    }
+
+    function translateWords() {
+      var words = [
+        ["Взаимно", "likewise"],
+        ["Я не слыхал об этом раньше", "I haven’t heard it before"],
+        ["Разговаривать/общаться", "Talk with/ talk to"],
+        ["нематериальный, неосязаемый", "Intangible"],
+        ["Я не люблю выпивать каждый день", "I don’t like to drink liquor every day"],
+        ["Испортить", "RUIN"],
+        ["Носить", "Carry"],
+        ["выбросить", "Throw away"],
+        ["иметь жажду / хотеть попить воды", "Thirsty"],
+        ["нагревать", "Heat up"],
+        ["Мы были сделаны друг для друга", "We were made for each other"],
+        ["осведомленность", "Awareness"],
+        ["дешевый или жлоб", "Cheap"],
+        ["Я не куплюсь на это!", "I’m not buying it = I don’t believe it"],
+        ["слишком хорошо звучит чтобы быть правдой", "(Something) is/seems/sounds too good to be true"],
+        ["Неловко", "Awkward"],
+        ["Я окружён", "I am surrounded by"],
+        ["причудливый / необычный", "Quirky"],
+        ["ёбнутый на всю голову", "Wacko"],
+        ["Игра слов не задумана/без намерения", "No pun intended"]
+      ];
+      
+      var wordElement = document.getElementById("word");
+      var translationElement = document.getElementById("translation");
+      var index = 0;
+      var isRussianToEnglish = true;
+      
+      function showNextWord() {
+        var currentWord = words[index][isRussianToEnglish ? 0 : 1];
+        var currentTranslation = words[index][isRussianToEnglish ? 1 : 0];
+        
+        wordElement.textContent = currentWord;
+        translationElement.textContent = ""; // Очистка перевода
+        
+        setTimeout(function() {
+          translationElement.textContent = currentTranslation;
+          
+          setTimeout(function() {
+            index++;
+            if (index >= words.length) {
+              index = 0;
+              isRussianToEnglish = !isRussianToEnglish;
+            }
+            
+            showNextWord(); // Показать следующее слово и перевод
+          }, 5000);
+        }, 3000);
+      }
+      
+      showNextWord(); // Показать первое слово сразу же
+    }
+  </script>
+</head>
+<body onload="translateWords()">
+  <h1>Перевод слов</h1>
+  
+  <p>Слово: <span id="word"></span></p>
+  <p>Перевод: <span id="translation"></span></p>
+</body>
+</html>
