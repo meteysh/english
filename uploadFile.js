@@ -13,12 +13,16 @@ function readFile(file, callback) {
 // Функция для парсинга файла и сохранения данных в Local Storage
 function parseAndSaveFile(file) {
   readFile(file, function(fileContent) {
-    const regex = /\uD83D\uDD25(.*?)=(.*?(?:\r?\n|$))/g;
+    const regex = /(.*?)\s*=\s*(.*)/g;
     const data = [];
 
     let match;
     while ((match = regex.exec(fileContent)) !== null) {
-      const key = match[1].trim();
+      const key = match[1].trim()
+          .replace(/📎/g, '')
+          .replace(/🧩/g, '')
+          .replace(/🔥/g, '')
+          .replace(/🗣️/g, '');
       const value = match[2].trim();
 
       data.push([ key, value ]);
