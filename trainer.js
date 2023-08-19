@@ -3,6 +3,14 @@ function getRandomIndex(array) {
 }
 
 function translateWords() {
+    const savedText = localStorage.getItem('filteredData');
+    const outputDiv = document.getElementById('output');
+
+    if (savedText) {
+        outputDiv.textContent = savedText;
+    } else {
+        outputDiv.textContent = 'Нет сохраненных данных.';
+    }
     var errorElement = document.getElementById("error");
 // Получение данных из Local Storage
     const jsonData = localStorage.getItem('parsedData');
