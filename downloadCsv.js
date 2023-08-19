@@ -8,7 +8,7 @@ function downloadCSV() {
     } else {
         errorElement.textContent = 'Загрузить файл-словарь';
     }
-    console.log(words);
+    // console.log(words);
     var csvContent = "data:text/csv;charset=utf-8,";
 
     words.forEach(function(rowArray) {
