@@ -43,6 +43,7 @@ function parseAndSaveFileWithoutCloud(file) {
     const filteredLines = lines
         .filter(function(line) {
           return line.trim() !== '' && !line.includes('💭')
+              && !line.includes('From Eugene')
               && !line.includes('❌') && !line.includes('✅');
         })
         .map(function(line) {
