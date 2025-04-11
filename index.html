@@ -1,25 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>robot-trainer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
-            font-size: 3em; /* Увеличение размера шрифта в три раза */
+            font-size: 1.5em;
+            margin: 0;
+            padding: 1em;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        textarea, input[type="file"], button, #error {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.5em;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            font-size: 1em;
+            padding: 0.5em;
+        }
+
+        button {
+            font-size: 0.9em;
+            padding: 0.5em;
+        }
+
+        #error {
+            font-size: 0.8em;
+            color: red;
+            margin-top: 0.2em;
+            min-height: 1.2em;
+        }
+
+        .file-and-convert {
+            display: flex;
+            gap: 0.5em;
+            align-items: stretch;
+            margin-bottom: 1em;
+            width: 100%;
+        }
+
+        .file-upload-label,
+        .file-and-convert button {
+            font-size: 1em;
+            padding: 0.5em;
+            text-align: center;
+            height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-upload-label {
+            background-color: #007BFF;
+            color: white;
+            flex-grow: 1;
+        }
+
+        .file-and-convert button {
+            background-color: #28a745;
+            color: white;
+            flex-grow: 1;
+        }
+
+        .file-upload-label:hover,
+        .file-and-convert button:hover {
+            background-color: #0056b3;
+        }
+
+
+        @media (min-width: 768px) {
+            textarea {
+                font-size: 1em;
+            }
+
+            button, input[type="file"] {
+                width: auto;
+            }
         }
     </style>
+
 </head>
-<body onload="translateWords()">
-<textarea id="word" rows="5" cols="50" style="font-size: 40%;"></textarea>
-<textarea id="translation" rows="5" cols="50" style="font-size: 40%;"></textarea>
-<textarea id="output" rows="15" cols="100" style="font-size: 40%;"></textarea>
-<!--    <p><span id="translation"></span></p>-->
-    <p><span id="error"></span></p>
-    <input type="file" id="fileUpload" accept=".txt">
-    <button onclick="downloadCSV()">Convert to CSV</button>
-    <script src="uploadFile.js"></script>
-    <script src="trainer.js"></script>
-    <script src="downloadCsv.js"></script>
+
+<button onclick="pasteFromBuffer()" style="font-size: 0.7em;">Paste from buffer</button>
+<textarea id="input" placeholder="Past your text here." style="height: 25vh;"></textarea>
+<textarea id="output" style="height: 35vh; margin-bottom: 0.2em;"></textarea>
+<button onclick="copyAll()" style="font-size: 0.7em;">Copy ALL</button>
+<div class="file-and-convert">
+    <label for="fileUpload" class="file-upload-label">Choose File</label>
+    <input type="file" id="fileUpload" accept=".txt" style="display: none;">
+    <button onclick="downloadCSV()">to CSV</button>
+</div>
+
+<script src="uploadFile.js"></script>
+<script src="savedInputText.js"></script>
+<script src="downloadCsv.js"></script>
 </body>
 </html>
-
