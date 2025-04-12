@@ -6,7 +6,7 @@ function downloadCSV() {
         errorElement.textContent = '';//очистить ошибку
         var words = JSON.parse(jsonData);
     } else {
-        errorElement.textContent = 'Загрузить файл-словарь';
+        errorElement.textContent = 'Загрузите текст';
     }
     // console.log(words);
     var csvContent = "data:text/csv;charset=utf-8,";
