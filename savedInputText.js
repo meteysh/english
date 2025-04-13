@@ -10,7 +10,8 @@ function savedInputText() {
             const resultText = handleContent(savedInputText);
             localStorage.setItem('filteredData', resultText);
 
-            console.log('File parsed and data saved to Local Storage.');
+            const outputDiv = document.getElementById('output');
+            outputDiv.textContent = resultText || 'No text.';
         });
     });
 
