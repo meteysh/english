@@ -16,6 +16,7 @@ function handleContent(fileContent) {
     const filteredLines = lines
         .filter(line =>
             line.trim() !== '' &&
+            line.includes('=') &&
             !line.includes('💭') &&
             !line.includes('From Eugene') &&
             !line.includes('❌') &&
