@@ -74,7 +74,11 @@ async function copyAll() {
 async function pasteFromBuffer() {
     try {
         const text = await navigator.clipboard.readText();
-        document.getElementById('input').value = text;
+        const inputElement = document.getElementById('input');
+        inputElement.value = text;
+
+        inputElement.dispatchEvent(new Event('input'));
+
         console.log('Text pasted from clipboard!');
     } catch (err) {
         console.error('Unable to read clipboard contents', err);

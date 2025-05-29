@@ -10,8 +10,8 @@ function savedInputText() {
             const resultText = handleContent(savedInputText);
             localStorage.setItem('filteredData', resultText);
 
-            const outputDiv = document.getElementById('output');
-            outputDiv.textContent = resultText || 'No text.';
+            const outputElement = document.getElementById('output');
+            outputElement.value = resultText || 'No text.';
         });
     });
 
